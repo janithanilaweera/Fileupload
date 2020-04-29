@@ -15,8 +15,9 @@ import java.nio.file.Paths;
 @Controller
 public class UploadController {
 
-    //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "D:\\myjava\\work\\fileupload-3\\Uploaded files\\";
+    //Save all the uploaded files to this folder
+    private static String UPLOADED_FOLDER = "c:\\Users\\Andym\\git\\fileupload\\fileupload-3\\";
+
 
     @GetMapping("/")
     public String index() {
@@ -44,6 +45,8 @@ public class UploadController {
 
         } catch (IOException e) {
             e.printStackTrace();
+            redirectAttributes.addFlashAttribute("message", "Error : " +  e);
+            return "redirect:/uploadStatus";
         }
 
         return "redirect:/uploadStatus";
